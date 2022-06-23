@@ -4,32 +4,19 @@ import axios from "axios";
 
 import "./Table.css";
 
-function JsonDataDisplay() {
-  const [jsonData, setJsonData] = useState([]);
+function Table() {
+  const [tableData, setTableData] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:5000/").then((res) => {
-      const users = res.data;
-      setJsonData(users);
-    });
+    try {
+      axios.get(process.env.REACT_APP_BACKEND_URL).then((res) => {
+        if (res) setTableData(res.data);
+      });
+    } catch (error) {
+      console.error(error);
+    }
   }, []);
-
-  const DisplayData = jsonData.map((user) => {
-    return (
-      <tr>
-        <td>{user.id}</td>
-        <td>{user.name}</td>
-        <td>{user.created}</td>
-        <td>{user.owner}</td>
-        <td>
-          <p className="view" onClick={() => navigate(`user/${user.id}`)}>
-            View
-          </p>
-        </td>
-      </tr>
-    );
-  });
 
   return (
     <div>
@@ -43,10 +30,29 @@ function JsonDataDisplay() {
             <th>Action</th>
           </tr>
         </thead>
-        <tbody>{DisplayData}</tbody>
+        <tbody>
+          {tableData.map((user) => {
+            return (
+              <tr key={user.id}>
+                <td>{user.id}</td>
+                <td>{user.name}</td>
+                <td>{user.created}</td>
+                <td>{user.owner}</td>
+                <td>
+                  <p
+                    className="view"
+                    onClick={() => navigate(`user/${user.id}`)}
+                  >
+                    View
+                  </p>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
     </div>
   );
 }
 
-export default JsonDataDisplay;
+export default Table;

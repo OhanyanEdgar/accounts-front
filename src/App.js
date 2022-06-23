@@ -15,10 +15,8 @@ function App() {
     <Router>
       <div>
         <Routes>
-          <Route path="/" element={<JsonDataDisplay />}>
-          </Route>
-          <Route path="/user/:id" element={<User /> }>
-          </Route>
+          <Route path="/" element={<JsonDataDisplay />} />
+          <Route path="/user/:id" element={<User /> } />
         </Routes>
       </div>
     </Router>

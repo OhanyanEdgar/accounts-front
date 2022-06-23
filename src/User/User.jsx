@@ -9,11 +9,11 @@ export const User = () => {
   const params = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/user/${params.id}`).then((res) => {
-      const user = res.data;
-      console.log("user: ", user);
-      setUser(user);
-    });
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/user/${params.id}`)
+      .then((res) => {
+        if (res) setUser(res.data)
+      });
   }, [params.id]);
 
   return (
