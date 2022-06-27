@@ -13,6 +13,22 @@ td {
   padding: 0 10px;
 }
 
-.view {
+.tableContainer {
+  display: flex;
+}
+
+.tablePage {
+  display: flex;
+}
+
+.delButton {
   cursor: pointer;
+  margin-left: 5px;
+  color: red;
+}
+
+.editButton {
+  cursor: pointer;
+  margin-left: 5px;
+  color: blue;
 }

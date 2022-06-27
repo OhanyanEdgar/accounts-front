@@ -6,7 +6,7 @@ import {
   Route,
 } from "react-router-dom";
 
-import JsonDataDisplay from "./Table/Table"
+import Table from "./Table/Table"
 import {User} from './User/User'
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
     <Router>
       <div>
         <Routes>
-          <Route path="/" element={<JsonDataDisplay />} />
+          <Route path="/" element={<Table />} />
           <Route path="/user/:id" element={<User /> } />
         </Routes>
       </div>
