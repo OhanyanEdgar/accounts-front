@@ -34,7 +34,7 @@ function Table() {
     }
   }, []);
 
-  const handleEdirUser = (user) => {
+  const handleEditUser = (user) => {
     setEditUserTogle((prev) => !prev);
     setUserToEdit(user);
   };
@@ -54,35 +54,33 @@ function Table() {
             </tr>
           </thead>
           <tbody>
-            {tableData.map((user) => {
-              return (
-                <tr key={user.id}>
-                  <td>{user.id.split("-")[1]}</td>
-                  <td>{user.name}</td>
-                  <td>{user.created}</td>
-                  <td>{user.owner}</td>
-                  <td>
-                    <div style={{ display: "flex" }}>
-                      <p
-                        className="view"
-                        onClick={() => navigate(`user/${user.id}`)}
-                      >
-                        View
-                      </p>
-                      <p className="delButton" onClick={() => delUser(user.id)}>
-                        Del
-                      </p>
-                      <p
-                        className="editButton"
-                        onClick={() => handleEdirUser(user)}
-                      >
-                        Edit
-                      </p>
-                    </div>
-                  </td>
-                </tr>
-              );
-            })}
+            {tableData.map(user => (
+              <tr key={user.id}>
+                <td>{user.id.split("-")[1]}</td>
+                <td>{user.name}</td>
+                <td>{user.created}</td>
+                <td>{user.owner}</td>
+                <td>
+                  <div style={{ display: "flex" }}>
+                    <p
+                      className="view"
+                      onClick={() => navigate(`user/${user.id}`)}
+                    >
+                      View
+                    </p>
+                    <p className="delButton" onClick={() => delUser(user.id)}>
+                      Del
+                    </p>
+                    <p
+                      className="editButton"
+                      onClick={() => handleEditUser(user)}
+                    >
+                      Edit
+                    </p>
+                  </div>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
         {editUserTogle && (

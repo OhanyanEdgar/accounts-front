@@ -1,5 +1,3 @@
-import './App.css';
-
 import {
   BrowserRouter as Router,
   Routes,
@@ -7,16 +5,16 @@ import {
 } from "react-router-dom";
 
 import Table from "./Table/Table"
-import {User} from './User/User'
+import { User } from './User/User'
+import './App.css';
 
 function App() {
   return (
-
     <Router>
       <div>
         <Routes>
           <Route path="/" element={<Table />} />
-          <Route path="/user/:id" element={<User /> } />
+          <Route path="/user/:id" element={<User />} />
         </Routes>
       </div>
     </Router>

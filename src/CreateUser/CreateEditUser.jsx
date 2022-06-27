@@ -18,15 +18,21 @@ export const CreateEditUser = ({ mode, userToEdit }) => {
 
   const handleCreateUser = (user) => {
     try {
-      mode === "create"
-        ? axios.post(`${process.env.REACT_APP_BACKEND_URL}/add_user/`, {
-            user: user,
+      if (mode === "create") {
+        axios
+          .post(`${process.env.REACT_APP_BACKEND_URL}/add_user/`, {
+            user,
           })
-        : axios
-            .post(`${process.env.REACT_APP_BACKEND_URL}/edit_user/`, {
-              user: user,
-            })
-            .then((res) => console.log("res: ", res));
+          .then((res) => {
+            console.log("\nres: ", res);
+          });
+      } else {
+        axios
+          .post(`${process.env.REACT_APP_BACKEND_URL}/edit_user/`, {
+            user,
+          })
+          .then((res) => console.log("res: ", res));
+      }
     } catch (er) {
       console.error(er);
     }
