@@ -4,7 +4,7 @@ import axios from "axios";
 
 import "./CreateEditUser.css";
 
-export const CreateEditUser = ({ mode, userToEdit }) => {
+export const CreateEditUser = ({ mode, userToEdit, setTableData }) => {
   const [user, setUser] = useState(
     mode === "create" ? { id: uuidv4() } : { ...userToEdit }
   );
@@ -24,7 +24,10 @@ export const CreateEditUser = ({ mode, userToEdit }) => {
             user,
           })
           .then((res) => {
-            console.log("\nres: ", res);
+            if (res.status === 201) {
+              setTableData(prev => [...prev, user])
+              setUser({ id: uuidv4() })
+            }
           });
       } else {
         axios
@@ -43,7 +46,7 @@ export const CreateEditUser = ({ mode, userToEdit }) => {
       <h3>
         {mode === "create" ? "Create User" : `Edit User ${userToEdit.name}`}
       </h3>
-      <form className="form">
+      <div className="form">
         <label htmlFor="name">name:</label>
         <input
           type="text"
@@ -83,7 +86,7 @@ export const CreateEditUser = ({ mode, userToEdit }) => {
         <button onClick={() => handleCreateUser(user)}>
           {mode === "create" ? "Create User" : "Save User"}
         </button>
-      </form>
+      </div>
     </div>
   );
 };

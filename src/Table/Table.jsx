@@ -5,7 +5,7 @@ import { CreateEditUser } from "../CreateUser/CreateEditUser";
 
 import "./Table.css";
 
-function Table() {
+export const Table = () => {
   const [tableData, setTableData] = useState([]);
   const [editUserTogle, setEditUserTogle] = useState(false);
   const [userToEdit, setUserToEdit] = useState({});
@@ -41,7 +41,7 @@ function Table() {
 
   return (
     <div className="tablePage">
-      <CreateEditUser mode="create" />
+      <CreateEditUser mode="create" setTableData={setTableData} />
       <div className="tableContainer">
         <table className="table table-striped">
           <thead>
@@ -90,5 +90,3 @@ function Table() {
     </div>
   );
 }
-
-export default Table;
