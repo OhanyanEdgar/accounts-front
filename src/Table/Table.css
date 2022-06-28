@@ -1,0 +1,34 @@
+.table {
+  margin: 20px auto;
+}
+
+table,
+th,
+td {
+  border: 1px solid;
+}
+
+td {
+  line-height: 30px;
+  padding: 0 10px;
+}
+
+.tableContainer {
+  display: flex;
+}
+
+.tablePage {
+  display: flex;
+}
+
+.delButton {
+  cursor: pointer;
+  margin-left: 5px;
+  color: red;
+}
+
+.editButton {
+  cursor: pointer;
+  margin-left: 5px;
+  color: blue;
+}
